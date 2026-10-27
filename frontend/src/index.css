@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body text-ink bg-white antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+::selection {
+  @apply bg-indigo-200;
+}
+
+*:focus-visible {
+  outline: 2px solid #4F46E5;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* dotted roadmap path used as the signature visual motif */
+.path-line {
+  background-image: radial-gradient(circle, #C2C7FA 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+}
+
+@layer components {
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-ink placeholder:text-slate-400 focus:border-indigo-400 outline-none transition-colors;
+  }
+  .btn-primary {
+    @apply py-2.5 px-5 rounded-full font-semibold text-white bg-gradient-brand shadow-soft hover:opacity-90 transition-opacity disabled:opacity-60;
+  }
+  .btn-secondary {
+    @apply py-2.5 px-5 rounded-full font-semibold text-ink border border-slate-200 hover:border-indigo-300 hover:text-indigo-700 transition-colors;
+  }
+}

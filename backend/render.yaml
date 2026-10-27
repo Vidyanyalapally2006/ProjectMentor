@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: projectmentor-api
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "10080"
+      - key: DATABASE_URL
+        value: sqlite:///./projectmentor.db
+      - key: CORS_ORIGINS
+        value: https://your-frontend.vercel.app,http://localhost:5173
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_API_URL
+        value: https://api.anthropic.com/v1/messages
